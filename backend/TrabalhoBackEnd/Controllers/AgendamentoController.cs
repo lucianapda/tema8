@@ -6,10 +6,12 @@ using System.Net.Http;
 using System.Web.Http;
 using TrabalhoBackEnd.Dto;
 using TrabalhoBackEnd.Enumeradores;
+using TrabalhoBackEnd.Seguranca;
 using TrabalhoBackEnd.Services;
 
 namespace TrabalhoBackEnd.Controllers
 {
+    [Autorizar(Perfis = PerfilUsuario.Usuario)]
     [RoutePrefix("agendamento")]
     public class AgendamentoController : ApiController
     {

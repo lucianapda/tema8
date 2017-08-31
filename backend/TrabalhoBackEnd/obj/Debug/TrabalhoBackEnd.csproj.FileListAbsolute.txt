@@ -141,3 +141,12 @@ C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\Micros
 C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.Entidades.TabelasSeguranca.resources
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\guilherme.schafer\Documents\tbackend\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.Properties.Resources.resources
