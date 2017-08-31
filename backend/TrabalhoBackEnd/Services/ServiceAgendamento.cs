@@ -6,6 +6,7 @@ using System.Web;
 using TrabalhoBackEnd.Dto;
 using TrabalhoBackEnd.Entidades;
 using TrabalhoBackEnd.Enumeradores;
+using AutoMapper;
 
 namespace TrabalhoBackEnd.Services
 {
@@ -54,7 +55,7 @@ namespace TrabalhoBackEnd.Services
             contexo.SaveChanges();
         }
 
-        public void LiberarLaboratorio(AgendamentoDto agendamentoDto)
+        public void AlterarStatusLaboratorio(AgendamentoDto agendamentoDto, StatusAgendamento status)
         {
             var agendamento = contexo.Agendamentos.AsQueryable();
 
@@ -87,7 +88,7 @@ namespace TrabalhoBackEnd.Services
 
             if (result.Count > 1)
             {
-                throw new Exception("Escolha somente um horário.");
+                throw new Exception("Inclua mais informações, para que seja liberado somente um horário.");
             }
 
             var horario = result.First();
@@ -102,9 +103,67 @@ namespace TrabalhoBackEnd.Services
                 throw new Exception("Horário em andamento.");
             }
 
-            horario.Status = StatusAgendamento.Cancelado;
+            horario.Status = status;
             contexo.Agendamentos.AddOrUpdate(horario);
             contexo.SaveChanges();
+        }
+
+        public List<AgendamentoDto> BuscarTodosAgendamento()
+        {
+            try
+            {
+                var retorno = contexo.Agendamentos.Where(x => x.HorarioInicial > DateTime.Now)
+                    .OrderBy(x => x.HorarioInicial).ToList();
+
+                return Mapper.Map<List<Agendamento>, List<AgendamentoDto>>(retorno);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Não foi possível buscar todos os agendamentos.");
+            }
+        }
+
+        public List<AgendamentoDto> BuscarAgendamentos(AgendamentoDto agendamento)
+        {
+            try
+            {
+                if (agendamento.NumeroSalaLaboratorio > 0)
+                {
+                    if (String.IsNullOrEmpty(agendamento.BlocoLaboratorio))
+                    {
+                        throw new ArgumentNullException("É necessário o bloco da sala para realizar a consulta corretamente.");
+                    }
+                }
+                var consulta = contexo.Agendamentos.Where(x => x.Status == StatusAgendamento.Aberto);
+
+                if (agendamento.IdDisciplina > 0)
+                {
+                    consulta = consulta.Where(x => x.Disciplina.Id == agendamento.IdDisciplina);
+                }
+
+                if (agendamento.IdLaboratorio > 0)
+                {
+                    consulta = consulta.Where(x => x.Laboratorio.Id == agendamento.IdLaboratorio);
+                }
+
+                if (!String.IsNullOrEmpty(agendamento.BlocoLaboratorio))
+                {
+                    consulta = consulta.Where(x => x.Laboratorio.Bloco == agendamento.BlocoLaboratorio);
+                }
+
+                if (agendamento.NumeroSalaLaboratorio > 0)
+                {
+                    consulta = consulta.Where(x => x.Laboratorio.NumeroSala == agendamento.NumeroSalaLaboratorio);
+                }
+
+                return Mapper.Map<List<Agendamento>, List<AgendamentoDto>>(consulta.ToList());
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

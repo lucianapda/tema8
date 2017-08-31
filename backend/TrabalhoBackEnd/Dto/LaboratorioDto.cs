@@ -9,5 +9,7 @@ namespace TrabalhoBackEnd.Dto
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
+        public string Bloco { get; set; }
+        public int NumeroSala { get; set; }
     }
 }

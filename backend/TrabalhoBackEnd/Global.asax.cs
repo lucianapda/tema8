@@ -14,19 +14,22 @@ namespace TrabalhoBackEnd
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        internal static HttpConfiguration HttpConfiguration { get; private set; }
         protected void Application_Start()
         {
+            HttpConfiguration = new HttpConfiguration();
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            RegistrarMapeamentos.Registrar();
+            WebApiConfig.Register(HttpConfiguration);
 
             AutoMapper.Mapper.Initialize(configuration =>
             {
-                var map = RegistrarMapeamentos.GetProfiles()
-                .Union(RegistrarMapeamentos.GetProfiles());
+                var map = AutoMapperConfig.GetProfiles()
+                .Union(AutoMapperConfig.GetProfiles());
 
                 foreach (Profile profile in map)
                 {
