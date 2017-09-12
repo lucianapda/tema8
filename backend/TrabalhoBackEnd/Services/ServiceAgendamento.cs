@@ -165,5 +165,30 @@ namespace TrabalhoBackEnd.Services
                 throw;
             }
         }
+
+        public List<AgendamentoDto> ConsultarAgendamento(int idLaboratorio, int idDisciplina)
+        {
+            try
+            {
+                var agendamentos = contexo.Agendamentos.AsQueryable();
+
+                if (idDisciplina > 0)
+                {
+                    agendamentos = agendamentos.Where(a => a.Disciplina.Id == idDisciplina);
+                }
+
+                if (idLaboratorio > 0)
+                {
+                    agendamentos = agendamentos.Where(a => a.Laboratorio.Id == idLaboratorio);
+                }
+
+                return Mapper.Map<List<Agendamento>, List<AgendamentoDto>>(agendamentos.OrderBy(x => x.HorarioInicial).ToList());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

@@ -13,12 +13,17 @@ using TrabalhoBackEnd.Services;
 
 namespace TrabalhoBackEnd.Controllers
 {
-    [Autorizar(Perfis = PerfilUsuario.Usuario)]
+    //[Autorizar(Perfis = PerfilUsuario.Usuario)]
     [RoutePrefix("usuario")]
     public class UsuarioController : ApiController
     {
         private ServiceUsuario serviceUsuario = new ServiceUsuario();
 
+        /// <summary>
+        /// Cadastrar usuário
+        /// </summary>
+        /// <param name="usuarioDto"></param>
+        /// <returns></returns>
         [Route]
         [HttpPost]
         public IHttpActionResult Cadastrar(UsuarioDto usuarioDto)

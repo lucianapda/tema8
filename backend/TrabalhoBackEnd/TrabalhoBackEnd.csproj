@@ -222,7 +222,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Dto\AgendamentoDto.cs" />
     <Compile Include="Dto\AutenticacaoDto.cs" />
     <Compile Include="Dto\LaboratorioDto.cs" />

@@ -17,6 +17,12 @@ namespace TrabalhoBackEnd.Controllers
     {
         private ServiceDisciplina serviceDisciplina = new ServiceDisciplina();
 
+
+        /// <summary>
+        /// Cadastrar uma disciplina
+        /// </summary>
+        /// <param name="disciplinaDto"></param>
+        /// <returns></returns>
         [Route]
         [HttpPost]
         public IHttpActionResult CadastrarDisciplina(DisciplinaDto disciplinaDto)
@@ -32,6 +38,10 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
        
+        /// <summary>
+        /// Buscar todas as disciplinas cadastradas
+        /// </summary>
+        /// <returns></returns>
         [Route]
         [HttpGet]
         public IHttpActionResult BuscarTodos()
@@ -46,6 +56,12 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Atualizar uma disciplina cadastrada
+        /// </summary>
+        /// <param name="disciplinaDto"></param>
+        /// <returns></returns>
         [Route]
         [HttpPut]
         public IHttpActionResult AtualizarDisciplia(DisciplinaDto disciplinaDto)
@@ -60,6 +76,12 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Deletar uma disciplina cadastrada
+        /// </summary>
+        /// <param name="idDisciplina">Id da disciplina</param>
+        /// <returns></returns>
         [Route("idDisciplina")]
         [HttpDelete]
         public IHttpActionResult Delete(string idDisciplina)
@@ -75,6 +97,11 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Buscar uma discipliona
+        /// </summary>
+        /// <param name="idDisciplina">Id da disciplina a ser buscado as informações</param>
+        /// <returns></returns>
         [Route("idDisciplina")]
         [HttpGet]
         public IHttpActionResult Buscar(string idDisciplina)

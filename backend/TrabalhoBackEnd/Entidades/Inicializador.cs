@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using TrabalhoBackEnd.Enumeradores;
 
 namespace TrabalhoBackEnd.Entidades
 {
@@ -12,7 +13,10 @@ namespace TrabalhoBackEnd.Entidades
         public override void InitializeDatabase(Contexto contexto)
         {
             var databaseExists = contexto.Database.Exists();
+            
             base.InitializeDatabase(contexto);
         }
+
+    
     }
 }

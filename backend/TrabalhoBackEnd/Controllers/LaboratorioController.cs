@@ -17,6 +17,11 @@ namespace TrabalhoBackEnd.Controllers
     {
         private ServiceLatoratorio serviceLatoratorio = new ServiceLatoratorio();
 
+        /// <summary>
+        /// Cadastrar um laboratório
+        /// </summary>
+        /// <param name="laboratorioDto"></param>
+        /// <returns></returns>
         [Route]
         [HttpPost]
         public IHttpActionResult Cadastrar(LaboratorioDto laboratorioDto)
@@ -32,6 +37,10 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Buscar todos os laboratórios cadastrados
+        /// </summary>
+        /// <returns></returns>
         [Route]
         [HttpGet]
         public IHttpActionResult BuscarTodos()
@@ -46,6 +55,11 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualizar um laboratório cadastrado
+        /// </summary>
+        /// <param name="laboratorioDto"></param>
+        /// <returns></returns>
         [Route]
         [HttpPut]
         public IHttpActionResult Atualizar(LaboratorioDto laboratorioDto)
@@ -60,6 +74,11 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletar um laboratório cadastrado
+        /// </summary>
+        /// <param name="idLaboratorio">Id laboratório a ser excluido</param>
+        /// <returns></returns>
         [Route("idLaboratorio")]
         [HttpDelete]
         public IHttpActionResult Delete(string idLaboratorio)
@@ -75,6 +94,12 @@ namespace TrabalhoBackEnd.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Buscar as informações do laboratório
+        /// </summary>
+        /// <param name="idLaboratorio">Id do laboratório</param>
+        /// <returns></returns>
         [Route("idLaboratorio")]
         public IHttpActionResult BuscarLaboratorio(string idLaboratorio)
         {

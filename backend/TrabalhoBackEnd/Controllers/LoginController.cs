@@ -16,6 +16,11 @@ namespace TrabalhoBackEnd.Controllers
     {
         private ServiceAutenticacao serviceAutenticacao = new ServiceAutenticacao();
 
+        /// <summary>
+        /// Realizar o login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>TOKEN</returns>
         [Route("autenticar")]
         [HttpPost]
         public IHttpActionResult Autenticar(AutenticacaoDto login)
