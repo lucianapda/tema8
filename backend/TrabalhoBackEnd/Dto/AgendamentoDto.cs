@@ -11,6 +11,7 @@ namespace TrabalhoBackEnd.Dto
         public int IdLaboratorio { get; set; }
         public int IdDisciplina { get; set; }
         public string Disciplina { get; set; }
+        public string Laboratorio { get; set; }
         public string BlocoLaboratorio { get; set; }
         public int NumeroSalaLaboratorio { get; set; }
         public DateTime HorarioInicial { get; set; }

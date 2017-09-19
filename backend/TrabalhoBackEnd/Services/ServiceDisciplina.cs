@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -18,8 +19,8 @@ namespace TrabalhoBackEnd.Services
             {
                 throw new Exception("É necessário uma descrição.");
             }
-
-            contexo.Disciplinas.Add(new Disciplina() { Descricao = disciplinaDto.Descricao });
+            var disciplina = Mapper.Map<DisciplinaDto, Disciplina>(disciplinaDto);
+            contexo.Disciplinas.Add(disciplina);
             contexo.SaveChanges();
         }
 
@@ -35,11 +36,11 @@ namespace TrabalhoBackEnd.Services
 
             if (disciplina == null)
             {
-                throw  new Exception("Disciplina não encontrada.");
+                throw  new ObjectNotFoundException("Disciplina não encontrada.");
             }
 
             disciplina.Descricao = disciplinaDto.Descricao;
-
+            disciplina.Curso = disciplinaDto.Curso;
             contexo.Disciplinas.AddOrUpdate(disciplina);
             contexo.SaveChanges();
         }
@@ -50,7 +51,7 @@ namespace TrabalhoBackEnd.Services
 
             if (disciplina == null)
             {
-                throw new Exception("Disciplina não encontrada.");
+                throw new ObjectNotFoundException("Disciplina não encontrada.");
             }
 
             contexo.Disciplinas.Remove(disciplina);
@@ -64,7 +65,7 @@ namespace TrabalhoBackEnd.Services
 
             if (disciplina == null)
             {
-                throw new Exception("Disciplina não encontrada.");
+                throw new ObjectNotFoundException("Disciplina não encontrada.");
             }
 
             return Mapper.Map<Disciplina, DisciplinaDto>(disciplina);

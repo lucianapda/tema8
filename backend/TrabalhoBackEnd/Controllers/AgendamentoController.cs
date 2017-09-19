@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 using TrabalhoBackEnd.Dto;
 using TrabalhoBackEnd.Enumeradores;
 using TrabalhoBackEnd.Seguranca;
@@ -49,6 +51,10 @@ namespace TrabalhoBackEnd.Controllers
                 serviceAgendamento.Cadastrar(agendamentoDto);
                 return Ok();
             }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
+            }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
@@ -68,6 +74,10 @@ namespace TrabalhoBackEnd.Controllers
             {
                 serviceAgendamento.AlterarStatusLaboratorio(agendamentoDto, StatusAgendamento.Cancelado);
                 return Ok();
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {
@@ -89,6 +99,10 @@ namespace TrabalhoBackEnd.Controllers
                 serviceAgendamento.AlterarStatusLaboratorio(agendamentoDto, StatusAgendamento.Concluido);
                 return Ok();
             }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
+            }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
@@ -107,6 +121,10 @@ namespace TrabalhoBackEnd.Controllers
             try
             {
                 return Ok(serviceAgendamento.ConsultarAgendamento(idLaboratorio, 0));
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {
@@ -128,6 +146,10 @@ namespace TrabalhoBackEnd.Controllers
             {
                 return Ok(serviceAgendamento.ConsultarAgendamento(0, idDisciplina));
             }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
+            }
             catch (Exception e)
             {
                 Console.WriteLine(e);
@@ -148,6 +170,10 @@ namespace TrabalhoBackEnd.Controllers
             try
             {
                 return Ok(serviceAgendamento.ConsultarAgendamento(idLaboratorio, idDisciplina));
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {

@@ -17,19 +17,19 @@ namespace TrabalhoBackEnd.Mapeamentos
 
         protected override void Configure()
         {
-            Mapper.CreateMap<Disciplina, DisciplinaDto>()
-                .ForMember(x => x.Id, opt => opt.Ignore());
+            Mapper.CreateMap<Disciplina, DisciplinaDto>();
 
-            Mapper.CreateMap<Laboratorio, LaboratorioDto>()
-                .ForMember(x => x.Id, opt => opt.Ignore());
+            Mapper.CreateMap<Laboratorio, LaboratorioDto>();
 
             Mapper.CreateMap<Agendamento, AgendamentoDto>()
                 .ForMember(x => x.Id, opt => opt.Ignore())
                 .ForMember(x => x.IdDisciplina, opt => opt.Ignore())
                 .ForMember(x => x.IdLaboratorio, opt => opt.Ignore())
                 .ForMember(x => x.BlocoLaboratorio, opt => opt.MapFrom(v => v.Laboratorio.Bloco))
+                .ForMember(x => x.Laboratorio, opt => opt.MapFrom(v => v.Laboratorio.Descricao))
                 .ForMember(x => x.NumeroSalaLaboratorio, opt => opt.MapFrom(v => v.Laboratorio.NumeroSala))
-                .ForMember(x => x.Disciplina, opt => opt.MapFrom(v => v.Disciplina.Descricao));
+                .ForMember(x => x.Disciplina, opt => opt.MapFrom(v => v.Disciplina.Descricao))
+                .ForMember(x => x.StatusAgendamento, opt => opt.MapFrom(v => v.Status.ToString()));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -20,7 +21,8 @@ namespace TrabalhoBackEnd.Services
                 throw new Exception("É necessário uma descrição.");
             }
 
-            contexo.Laboratorios.Add(new Laboratorio() { Descricao = laboratorioDto.Descricao });
+            var laboratorio = Mapper.Map<LaboratorioDto, Laboratorio>(laboratorioDto);
+            contexo.Laboratorios.Add(laboratorio);
             contexo.SaveChanges();
         }
 
@@ -36,10 +38,13 @@ namespace TrabalhoBackEnd.Services
 
             if (laboratorio == null)
             {
-                throw  new Exception("Disciplina não encontrada.");
+                throw  new ObjectNotFoundException("Disciplina não encontrada.");
             }
 
             laboratorio.Descricao = laboratorioDto.Descricao;
+            laboratorio.NumeroSala = laboratorioDto.NumeroSala;
+            laboratorio.Bloco = laboratorioDto.Bloco;
+            laboratorio.QtdMaquinas = laboratorio.QtdMaquinas;
 
             contexo.Laboratorios.AddOrUpdate(laboratorio);
             contexo.SaveChanges();
@@ -51,7 +56,7 @@ namespace TrabalhoBackEnd.Services
 
             if (laboratorio == null)
             {
-                throw new Exception("Disciplina não encontrada.");
+                throw new ObjectNotFoundException("Disciplina não encontrada.");
             }
 
             contexo.Laboratorios.Remove(laboratorio);
@@ -64,7 +69,7 @@ namespace TrabalhoBackEnd.Services
 
             if (laboratorio == null)
             {
-                throw new Exception("Laboratório não existente.");
+                throw new ObjectNotFoundException("Laboratório não existente.");
             }
 
             return Mapper.Map<Laboratorio, LaboratorioDto>(laboratorio);

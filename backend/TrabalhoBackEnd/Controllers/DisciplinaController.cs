@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -68,7 +69,12 @@ namespace TrabalhoBackEnd.Controllers
         {
             try
             {
+                serviceDisciplina.Atualizar(disciplinaDto);
                 return Ok();
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {
@@ -82,7 +88,7 @@ namespace TrabalhoBackEnd.Controllers
         /// </summary>
         /// <param name="idDisciplina">Id da disciplina</param>
         /// <returns></returns>
-        [Route("idDisciplina")]
+        [Route("{idDisciplina}")]
         [HttpDelete]
         public IHttpActionResult Delete(string idDisciplina)
         {
@@ -90,6 +96,10 @@ namespace TrabalhoBackEnd.Controllers
             {
                 serviceDisciplina.Deletar(Int32.Parse(idDisciplina));
                 return Ok();
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {
@@ -102,14 +112,18 @@ namespace TrabalhoBackEnd.Controllers
         /// </summary>
         /// <param name="idDisciplina">Id da disciplina a ser buscado as informações</param>
         /// <returns></returns>
-        [Route("idDisciplina")]
+        [Route("{idDisciplina}")]
         [HttpGet]
         public IHttpActionResult Buscar(string idDisciplina)
         {
             try
             {
-                serviceDisciplina.Obter(Int32.Parse(idDisciplina));
-                return Ok();
+                
+                return Ok(serviceDisciplina.Obter(Int32.Parse(idDisciplina)));
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (InvalidCastException e)
             {

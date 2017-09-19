@@ -35,6 +35,7 @@ namespace TrabalhoBackEnd.Services
 
             return usuario;
         }
+
         public Usuario Autenticar(Token token)
         {
             if (token == null || !token.Valido)

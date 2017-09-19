@@ -21,33 +21,35 @@ namespace TrabalhoBackEnd.Entidades
 
         protected override void Seed(Contexto contexto)
         {
-            var lista = new List<Perfil>();
-
-            lista.Add(new Perfil()
+            if (!contexto.Database.Exists())
             {
-                Id = 1,
-                Nome = "Admin",
-                Tipo = PerfilUsuario.Administrador
-            });
+                var lista = new List<Perfil>();
 
-            lista.Add(new Perfil()
-            {
-                Id = 2,
-                Nome = "Usuário",
-                Tipo = PerfilUsuario.Usuario
-            });
+                lista.Add(new Perfil()
+                {
+                    Id = 1,
+                    Nome = "Admin",
+                    Tipo = PerfilUsuario.Administrador
+                });
 
-            contexto.Perfis.AddOrUpdate(x => x.Id, lista.FirstOrDefault(), lista.LastOrDefault());
+                lista.Add(new Perfil()
+                {
+                    Id = 2,
+                    Nome = "Usuário",
+                    Tipo = PerfilUsuario.Usuario
+                });
 
-            contexto.Usuarios.AddOrUpdate(x => x.Id, new Usuario()
-            {
-                Id = 1,
-                Login = "admin",
-                Nome = "Administrador",
-                Perfis = lista,
-                Senha = Utils.GenerateSHA512String("123")
-            });
+                contexto.Perfis.AddOrUpdate(x => x.Id, lista.FirstOrDefault(), lista.LastOrDefault());
 
+                contexto.Usuarios.AddOrUpdate(x => x.Id, new Usuario()
+                {
+                    Id = 1,
+                    Login = "admin",
+                    Nome = "Administrador",
+                    Perfis = lista,
+                    Senha = Utils.GenerateSHA512String("123")
+                });
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -66,7 +67,12 @@ namespace TrabalhoBackEnd.Controllers
         {
             try
             {
+                serviceLatoratorio.Atualizar(laboratorioDto);
                 return Ok();
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {
@@ -79,7 +85,7 @@ namespace TrabalhoBackEnd.Controllers
         /// </summary>
         /// <param name="idLaboratorio">Id laboratório a ser excluido</param>
         /// <returns></returns>
-        [Route("idLaboratorio")]
+        [Route("{idLaboratorio}")]
         [HttpDelete]
         public IHttpActionResult Delete(string idLaboratorio)
         {
@@ -87,6 +93,10 @@ namespace TrabalhoBackEnd.Controllers
             {
                 serviceLatoratorio.Deletar(Int32.Parse(idLaboratorio));
                 return Ok();
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {
@@ -100,18 +110,22 @@ namespace TrabalhoBackEnd.Controllers
         /// </summary>
         /// <param name="idLaboratorio">Id do laboratório</param>
         /// <returns></returns>
-        [Route("idLaboratorio")]
+        [Route("{idLaboratorio}")]
+        [HttpGet]
         public IHttpActionResult BuscarLaboratorio(string idLaboratorio)
         {
             try
             {
-                serviceLatoratorio.ObterLaboratorio(Int32.Parse(idLaboratorio));
-                return Ok();
+                
+                return Ok(serviceLatoratorio.ObterLaboratorio(Int32.Parse(idLaboratorio)));
+            }
+            catch (ObjectNotFoundException e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
-                throw;
             }
         }
     }

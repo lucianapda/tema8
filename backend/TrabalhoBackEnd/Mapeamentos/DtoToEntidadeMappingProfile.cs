@@ -18,6 +18,9 @@ namespace TrabalhoBackEnd.Mapeamentos
         protected override void Configure()
         {
             Mapper.CreateMap<UsuarioDto, Usuario>();
+            Mapper.CreateMap<LaboratorioDto, Laboratorio>();
+            Mapper.CreateMap<DisciplinaDto, Disciplina>();
+            Mapper.CreateMap<AgendamentoDto, Agendamento>();
         }
     }
 }

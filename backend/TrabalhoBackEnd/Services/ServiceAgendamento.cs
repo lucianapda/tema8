@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -20,21 +21,30 @@ namespace TrabalhoBackEnd.Services
 
             if (laboratorio == null)
             {
-                throw new Exception("Laboratório não cadastrado.");
+                throw new ObjectNotFoundException("Laboratório não cadastrado.");
             }
 
             var disciplina = contexo.Disciplinas.Where(x => x.Id == agendamentoDto.IdDisciplina).FirstOrDefault();
 
             if (disciplina == null)
             {
-                throw new Exception("Disciplina não cadastrada.");
+                throw new ObjectNotFoundException("Disciplina não cadastrada.");
             }
 
+            if (agendamentoDto.HorarioInicial == DateTime.MinValue)
+            {
+                throw  new Exception("Insira um horário inicial");
+            }
+
+            if (agendamentoDto.HorarioFinal == DateTime.MinValue)
+            {
+                throw new Exception("Insira um horário final");
+            }
             var horarioAgendamento = contexo.Agendamentos
-                .Where(x => (x.HorarioInicial <= agendamentoDto.HorarioInicial &&
+                .Where(x => x.Status == StatusAgendamento.Aberto && ((x.HorarioInicial <= agendamentoDto.HorarioInicial &&
                             x.HorarioFinal >= agendamentoDto.HorarioInicial) ||
                             (x.HorarioInicial <= agendamentoDto.HorarioFinal &&
-                             x.HorarioFinal >= agendamentoDto.HorarioFinal))
+                             x.HorarioFinal >= agendamentoDto.HorarioFinal)))
                 .FirstOrDefault();
 
             if (horarioAgendamento != null)
@@ -57,7 +67,7 @@ namespace TrabalhoBackEnd.Services
 
         public void AlterarStatusLaboratorio(AgendamentoDto agendamentoDto, StatusAgendamento status)
         {
-            var agendamento = contexo.Agendamentos.AsQueryable();
+            var agendamento = contexo.Agendamentos.Where(x=> x.Status == StatusAgendamento.Aberto);
 
             if (agendamentoDto.Id != 0)
             {
@@ -85,6 +95,11 @@ namespace TrabalhoBackEnd.Services
             }
 
             var result = agendamento.ToList();
+
+            if (result.Count == 0)
+            {
+                throw new ObjectNotFoundException("Não foi encontrado nenhum agendamento.");
+            }
 
             if (result.Count > 1)
             {
