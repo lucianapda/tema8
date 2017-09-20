@@ -26,10 +26,10 @@ namespace TrabalhoBackEnd.Services
             contexo.SaveChanges();
         }
 
-        public LaboratorioDto BuscarTodos()
+        public List<LaboratorioDto> BuscarTodos()
         {
-            var lista = contexo.Laboratorios.Where(x => 1 == 1).ToList().First();
-            return Mapper.Map<Laboratorio, LaboratorioDto>(lista);
+            var lista = contexo.Laboratorios.Where(x => 1 == 1).ToList();
+            return Mapper.Map<List<Laboratorio>, List<LaboratorioDto>>(lista);
         }
 
         public void Atualizar(LaboratorioDto laboratorioDto)

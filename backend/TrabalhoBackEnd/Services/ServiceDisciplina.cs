@@ -24,10 +24,10 @@ namespace TrabalhoBackEnd.Services
             contexo.SaveChanges();
         }
 
-        public DisciplinaDto BuscarTodos()
+        public List<DisciplinaDto >BuscarTodos()
         {
-            var lista = contexo.Disciplinas.Where(x => 1 == 1).ToList().First();
-            return Mapper.Map<Disciplina, DisciplinaDto>(lista);
+            var lista = contexo.Disciplinas.Where(x => 1 == 1).ToList();
+            return Mapper.Map<List<Disciplina>, List<DisciplinaDto>>(lista);
         }
 
         public void Atualizar(DisciplinaDto disciplinaDto)
