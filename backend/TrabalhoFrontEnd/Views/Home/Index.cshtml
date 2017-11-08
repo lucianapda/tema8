@@ -1,0 +1,28 @@
+﻿@model TrabalhoFrontEnd.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@using (Html.BeginForm("Login", "Home"))
+{
+    <div class="row">
+       
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Usuario)
+
+            @Html.EditorFor(m => m.Usuario);
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Senha)
+
+            @Html.EditorFor(m => m.Senha);
+        </div>
+        <div class="col-md-4">
+       
+            <div class="form-group col-sm-6 col-sm-offset-6 v-padding-0">
+                <button id="btnEntrar" type="submit" class="btn btn-default pull-right">Entrar</button>
+            </div>
+        </div>
+    </div>
+}
