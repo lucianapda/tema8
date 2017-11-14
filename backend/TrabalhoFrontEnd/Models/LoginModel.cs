@@ -5,9 +5,9 @@ using System.Web;
 
 namespace TrabalhoFrontEnd.Models
 {
-    public class Login
+    public class LoginModel
     {
-        public string Usuario { get; set; }
+        public string Login { get; set; }
         public string Senha { get; set; }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using SimpleInjector;
+using TrabalhoFrontEnd.Services;
 
 namespace TrabalhoFrontEnd
 {
@@ -16,6 +19,17 @@ namespace TrabalhoFrontEnd
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ConfigurarDependencias();
+        }
+
+        private void ConfigurarDependencias()
+        {
+           var container = new Container();
+
+            container.Register<AutenticarService>();
+            
+            container.Verify();
         }
     }
 }

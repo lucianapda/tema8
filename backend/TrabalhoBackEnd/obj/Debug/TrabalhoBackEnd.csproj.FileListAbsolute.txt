@@ -211,7 +211,6 @@ C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\bin\System.
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\bin\System.Web.WebPages.xml
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\bin\System.Web.WebPages.Razor.xml
-C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.csprojResolveAssemblyReference.cache
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.Entidades.BaseInicial.resources
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.Entidades.NovaColunaStatusAgendamento.resources
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.Entidades.NovasColunas.resources
