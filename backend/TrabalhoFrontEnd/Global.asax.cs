@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SimpleInjector;
+using SimpleInjector.Integration.Web.Mvc;
 using TrabalhoFrontEnd.Services;
 
 namespace TrabalhoFrontEnd
@@ -30,6 +31,9 @@ namespace TrabalhoFrontEnd
             container.Register<AutenticarService>();
             
             container.Verify();
+
+            DependencyResolver.SetResolver(
+                new SimpleInjectorDependencyResolver(container));
         }
     }
 }

@@ -24,9 +24,9 @@ namespace TrabalhoFrontEnd.Services
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 
-                    var response = client.PostAsJsonAsync("login/aunteticar", login);
+                    var response = client.PostAsJsonAsync("login/autenticar", login).Result;
 
-                    if (response.IsCompleted)
+                    if (response.IsSuccessStatusCode)
                     {
                         return true;
                     }
