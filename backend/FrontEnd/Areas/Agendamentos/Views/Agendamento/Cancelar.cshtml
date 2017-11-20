@@ -1,0 +1,77 @@
+﻿@model Aplicacao.Dto.AgendamentoDto
+
+@{
+    ViewBag.Title = "Cancelar";
+}
+
+<div class="page-header">
+    <div class="btn-toolbar pull-right">
+
+        <a href="@Url.Action("Index", "Agendamento")" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Voltar
+        </a>
+
+    </div>
+    <h3>@ViewBag.Title</h3>
+</div> <!-- Cabeçalho -->
+@using (Html.BeginForm("Cancelar", "Agendamento", FormMethod.Post, new { novalidate = "" }))
+{
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Disciplina</label>
+            @Html.EditorFor(model => model.Disciplina, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.Disciplina, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Laboratorio </label>
+            @Html.EditorFor(model => model.Laboratorio, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.Laboratorio, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="form-group col-xs-12 col-md-6">
+                <label class="control-label">Bloco</label>
+                @Html.EditorFor(model => model.BlocoLaboratorio, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control", @maxlength = "100" } })
+                @Html.ValidationMessageFor(model => model.BlocoLaboratorio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-xs-12 col-md-6">
+                <label class="control-label">Sala</label>
+                @Html.EditorFor(model => model.NumeroSalaLaboratorio, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control", @maxlength = "100" } })
+                @Html.ValidationMessageFor(model => model.NumeroSalaLaboratorio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-xs-12 col-md-6">
+                <label class="control-label">Horario Inicial </label>
+                @Html.EditorFor(model => model.HorarioInicial, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control", @maxlength = "100" } })
+                @Html.ValidationMessageFor(model => model.HorarioInicial, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12 col-md-6">
+                <label class="control-label">Horario Final </label>
+                @Html.EditorFor(model => model.HorarioFinal, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control", @maxlength = "100" } })
+                @Html.ValidationMessageFor(model => model.HorarioFinal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="form-group text-right col-md-2 col-xs-12 ">
+                <button type="submit" class="btn btn-danger col-xs-12">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    &nbsp;Cancelar
+                </button>
+            </div> <!-- Botão de Ação-->
+        </div>
+}

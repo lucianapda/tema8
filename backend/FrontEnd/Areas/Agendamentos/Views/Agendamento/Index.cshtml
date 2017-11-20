@@ -1,0 +1,37 @@
+﻿@using GridMvc.Html
+@model List<Aplicacao.Dto.AgendamentoDto>
+@{
+    ViewBag.Title = "Disciplina";
+}
+
+<div class="page-header">
+    <div class="btn-toolbar pull-right">
+        <a href="@Url.Action("Cadastrar")"
+           class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Novo</a>
+    </div>
+    <h3>@ViewBag.Title</h3>
+</div>
+<div class="code-cut">  
+    @Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(c => c.Id, true);
+        columns.Add(c => c.Disciplina).Titled("Disciplina").Filterable(true);
+        columns.Add(c => c.Laboratorio).Titled("Laboratorio").Filterable(true);
+        columns.Add(c => c.NumeroSalaLaboratorio).Titled("Sala").Filterable(true);
+        columns.Add(c => c.HorarioInicial).Titled("Horario Inicial").Filterable(true);
+        columns.Add(c => c.HorarioFinal).Titled("Horario Final").Filterable(true);
+        columns.Add(c => c.StatusAgendamento).Titled("Status").Filterable(true);
+
+        columns.Add()
+            .Encoded(false)
+            .Sanitized(false)
+            .SetWidth(30)
+            .RenderValueAs(o => Html.ActionLink("Cancelar", "Cancelar", new { id = o.Id }));
+        columns.Add()
+            .Encoded(false)
+            .Sanitized(false)
+            .SetWidth(30)
+            .RenderValueAs(o => Html.ActionLink("Liberar", "Liberar", new { id = o.Id }));
+
+    }).WithPaging(10).Sortable(true)  
+</div>  

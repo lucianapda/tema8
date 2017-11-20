@@ -18,3 +18,4 @@ C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\Aplicacao\obj\Debug\Aplicac
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\Aplicacao\obj\Debug\Aplicacao.csproj.GenerateResource.Cache
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\Aplicacao\obj\Debug\Aplicacao.dll
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\Aplicacao\obj\Debug\Aplicacao.pdb
+C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\Aplicacao\obj\Debug\Aplicacao.csprojResolveAssemblyReference.cache

@@ -1,0 +1,345 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("AGENDAMENTOS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Laboratorio", "Index", "Laboratorio")</li>
+                <li>@Html.ActionLink("Disciplina", "Index", "Disciplina")</li>
+                <li>@Html.ActionLink("Agendamento", "Index", "Agendamento")</li>
+                @*<li>@Html.ActionLink("Usuario", "Index", "Usuario")</li>*@
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="menu-header">
+                    <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                       aria-expanded="false" data-toggle="dropdown">
+                        @User.Identity.Name<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu text-right xs-text-left">
+                        <li>
+                            @Html.ActionLink("Sair", "Logoff", "Login", new { Area = "" }, htmlAttributes:
+                                new { id = "logoffLink" })
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+@*@using Jequiti.Aplicacao.Infra.Extensions;
+@using Jequiti.Dominio.Enums;
+@{
+    Layout = null;
+}
+
+@functions {
+    string MenuAtivado(string nomeController, string nomeAction = "")
+    {
+        if (Request.RequestContext.RouteData.Values["controller"].ToString() == nomeController &&
+            (String.IsNullOrWhiteSpace(nomeAction) ||
+            Request.RequestContext.RouteData.Values["action"].ToString() == nomeAction))
+        {
+            return "active";
+        }
+        else
+        {
+            return string.Empty;
+        }
+    }
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container menu-jequiti">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="@Url.Action("Index", "Inicio", new { Area = "Administrativo" })">
+                <img class="navbar-brand" src="@Url.Content("~/Images/logo_jequiti_claro.png")" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            @if (Request.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav">
+                    @if (User.IsInRole(PerfilUsuario.CallCenter | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Vendas0800 | PerfilUsuario.Picking | PerfilUsuario.Conferencia | PerfilUsuario.Administrador | PerfilUsuario.Comprador | PerfilUsuario.Distribuidor))
+                    {
+                        <li class="menu-header">
+                            <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                               aria-expanded="false" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-th"></span> Módulos<span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial))
+                                {
+                                    <li>
+                                        @Html.ActionLink("Produção (Picking)", "Vinculo", "Vinculo", new { Area = "Producao" }, null)
+                                    </li>
+                                }
+                                @if (User.IsInRole(PerfilUsuario.Comprador | PerfilUsuario.Administrador | PerfilUsuario.Distribuidor))
+                                {
+                                    <li>
+                                        @Html.ActionLink("Distribuição", "Index", "inicio", new { Area = "Distribuicao" }, null)
+                                    </li>
+                                }
+                                @if (User.IsInRole(PerfilUsuario.CallCenter | PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Vendas0800))
+                                {
+                                    <li>
+                                        @Html.ActionLink("Vendas 0800", "Index", "Inicio", new { Area = "Venda0800" }, null)
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.CallCenter | PerfilUsuario.Cliente | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Contabilidade | PerfilUsuario.ContasAPagar | PerfilUsuario.Conferencia | PerfilUsuario.Picking | PerfilUsuario.Vendas0800))
+                    {
+                        <li class="@MenuAtivado("Cliente") menu-header">
+                            <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                               aria-expanded="false" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span> Cliente<span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                @if (!User.IsInRole(PerfilUsuario.ContasAPagar | PerfilUsuario.Contabilidade | PerfilUsuario.Conferencia | PerfilUsuario.Picking | PerfilUsuario.Vendas0800))
+                                {
+                                    <li class="@MenuAtivado("Cliente", "Cadastrar")">
+                                        @Html.ActionLink("Novo Cliente", "Cadastrar", "Cliente", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+
+                                @if (!User.IsInRole((PerfilUsuario.Conferencia | PerfilUsuario.Picking | PerfilUsuario.Vendas0800)))
+                                {
+                                    <li class="@MenuAtivado("Cliente", "Index")">
+                                        @Html.ActionLink("Pesquisar Cliente", "Index", "Cliente", new { Area = "Administrativo" }, null)
+                                    </li>
+
+                                    <li class="@MenuAtivado("BlackList", "Pesquisar")">
+                                        @Html.ActionLink("Black List", "Pesquisar", "BlackList", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+
+                                @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.CallCenter | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Conferencia | PerfilUsuario.Picking | PerfilUsuario.Vendas0800))
+                                {
+                                    <li class="@MenuAtivado("ClientePreCupom", "Index")">
+                                        @Html.ActionLink("Pré-Cadastro", "Index", "ClientePreCupom", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("ClientePreCupom", "Pesquisar")">
+                                        @Html.ActionLink("Pesquisar Pré-Cadastro", "Pesquisar", "ClientePreCupom", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial | PerfilUsuario.CallCenter | PerfilUsuario.Contabilidade | PerfilUsuario.ContasAPagar | PerfilUsuario.Comprador))
+                    {
+                        <li class="@MenuAtivado("Carne") menu-header">
+                            <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                               aria-expanded="false" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-file"></span> Carnês<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="@MenuAtivado("Carne", "Index")">
+                                    @Html.ActionLink("Pesquisa", "Index", "Carne", new { Area = "Administrativo" }, null)
+                                </li>
+                                @if (!User.IsInRole(PerfilUsuario.ContasAPagar | PerfilUsuario.Contabilidade | PerfilUsuario.CallCenter))
+                                {
+                                    <li class="@MenuAtivado("Carne", "Series")">
+                                        @Html.ActionLink("Séries", "Series", "Carne", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Carne", "Incinerar")">
+                                        @Html.ActionLink("Incinerar", "Incinerar", "Carne", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                                @if (!User.IsInRole(PerfilUsuario.ContasAPagar | PerfilUsuario.Contabilidade | PerfilUsuario.CallCenter | PerfilUsuario.Comprador))
+                                {
+                                    <li class="@MenuAtivado("Carne", "Alterar Status")">
+                                        @Html.ActionLink("Alteração Status", "ImportarArquivoStatus", "Carne",
+                                            new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial))
+                    {
+                        <li class="@MenuAtivado("BI") menu-header">
+                            <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                               aria-expanded="false" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-th-list"></span> BI<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="@MenuAtivado("BI", "BI")">
+                                    @Html.ActionLink("Pedidos X Carnê", "PedidosXCarne", "Bi",
+                                        new { Area = "Administrativo" }, null)
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.ContasAPagar))
+                    {
+                        <li class="@MenuAtivado("Financeiro") menu-header">
+                            <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                               aria-expanded="false" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-retweet"></span> Financeiro<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="@MenuAtivado("Financeiro", "ImportarArquivoBancario")">
+                                    @Html.ActionLink("Arquivo bancário", "ImportarArquivoBancario", "Financeiro",
+                                        new { Area = "Administrativo" }, null)
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial))
+                    {
+                        <li class="@MenuAtivado("Usuario") menu-header">
+                            <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                               aria-expanded="false" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-wrench"></span> Configurações<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @if (User.IsInRole(PerfilUsuario.Administrador))
+                                {
+                                    <li class="@MenuAtivado("Usuario")">
+                                        @Html.ActionLink("Usuário", "Index", "Usuario", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Parametros")">
+                                        @Html.ActionLink("Parâmetros", "Index", "Parametros", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("MotivosCancelamento")">
+                                        @Html.ActionLink("Motivos Cancelamento", "MotivoCancelamento", "MotivosCancelamento", new { Area = "Administrativo" }, null)
+                                    </li>
+
+                                    <li class="@MenuAtivado("MotivosBlackList")">
+                                        @Html.ActionLink("Motivos Black List", "MotivoBlackList", "MotivosBlackList", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                                <li class="@MenuAtivado("PrazoEntrega")">
+                                    @Html.ActionLink("Prazo Entrega", "Index", "PrazoEntrega", new { Area = "Administrativo" }, null)
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Contabilidade | PerfilUsuario.ContasAPagar | PerfilUsuario.CallCenter | PerfilUsuario.Conferencia | PerfilUsuario.Picking | PerfilUsuario.Vendas0800))
+                    {
+                        <li class="@MenuAtivado("Relatorio") menu-header">
+                            <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                               aria-expanded="false" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-list-alt"></span> Relatórios<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li class="@MenuAtivado("Relatorio", "MeusRelatorios")">
+                                    @Html.ActionLink("Meus Relatórios", "MeusRelatorios", "Relatorio", new { Area = "Administrativo" }, null)
+                                </li>
+                                @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Contabilidade | PerfilUsuario.ContasAPagar))
+                                {
+                                    <li class="@MenuAtivado("Relatorio", "CarnesAtivos")">
+                                        @Html.ActionLink("Carnês Ativos", "CarnesAtivos", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Relatorio", "FalhaPagamento")">
+                                        @Html.ActionLink("Falha de Pagamento", "FalhaPagamento", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Relatorio", "ConciliacaoCNAB")">
+                                        @Html.ActionLink("Conciliação CNAB", "ConciliacaoCNAB", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Relatorio", "HistoricoImportacaoCNAB")">
+                                        @Html.ActionLink("Histórico Importação CNAB", "HistoricoImportacaoCNAB", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Relatorio", "Integrações")">
+                                        @Html.ActionLink("Integracoes", "Integracoes", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+
+                                    <li class="@MenuAtivado("Relatorio", "CarnesSuspeitos")">
+                                        @Html.ActionLink("Carnês Suspeitos", "CarnesSuspeitos", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Relatorio", "Colheita")">
+                                        @Html.ActionLink("Colheita", "Colheita", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Relatorio", "CarnesIncinerados")">
+                                        @Html.ActionLink("Carnês Incinerados", "CarnesIncinerados", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+
+                                    <li class="@MenuAtivado("Relatorio", "CarneExpirados")">
+                                        @Html.ActionLink("Carnês Expirados", "CarnesExpirados", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+
+                                    <li class="@MenuAtivado("Relatorio", "SolicitacaoCarne")">
+                                        @Html.ActionLink("Solicitação Carnê", "SolicitacaoCarne", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+
+                                    <li class="@MenuAtivado("Relatorio", "TesouroNacional")">
+                                        @Html.ActionLink("Tesouro Nacional", "TesouroNacional", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                    <li class="@MenuAtivado("Relatorio", "TesouroNacional1e2Parcelas")">
+                                        @Html.ActionLink("Tesouro Nacional 1 e 2 Parcelas", "TesouroNacional1e2Parcelas", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                                @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Contabilidade | PerfilUsuario.ContasAPagar | PerfilUsuario.Vendas0800))
+                                {
+                                    <li class="@MenuAtivado("Relatorio", "SolicitacaoCorreios")">
+                                        @Html.ActionLink("Solicitação Correios", "SolicitacaoCorreios", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                                @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial | PerfilUsuario.Contabilidade | PerfilUsuario.ContasAPagar))
+                                {
+
+                                    <li class="@MenuAtivado("Relatorio", "ClientesBlackList")">
+                                        @Html.ActionLink("Clientes Black List", "ClientesBlackList", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                                @if (User.IsInRole(PerfilUsuario.Administrador | PerfilUsuario.InteligenciaComercial | PerfilUsuario.CallCenter | PerfilUsuario.Conferencia | PerfilUsuario.Picking | PerfilUsuario.Vendas0800))
+                                {
+
+                                    <li class="@MenuAtivado("Relatorio", "ClientesPreCupom")">
+                                        @Html.ActionLink("Clientes Pré-Cadastro", "ClientesPreCupom", "Relatorio", new { Area = "Administrativo" }, null)
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="menu-header">
+                        <a href="javascript:void(0)" class="dropdown-toggle active" role="button" aria-haspopup="true"
+                           aria-expanded="false" data-toggle="dropdown">
+                            @User.Identity.Name.ToUpper()<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu text-right xs-text-left">
+                            <li>
+                                @Html.ActionLink("Sair", "Logoff", "Login", new { Area = "" }, htmlAttributes:
+                                    new { id = "logoffLink" })
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @Html.ActionLink("Entrar", "Index", "Login", new { }, htmlAttributes: new { id = "loginLink" })
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+</div>*@

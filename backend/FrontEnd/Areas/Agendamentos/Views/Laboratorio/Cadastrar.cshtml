@@ -1,0 +1,63 @@
+﻿@model Aplicacao.Dto.LaboratorioDto
+
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<div class="page-header">
+    <div class="btn-toolbar pull-right">
+
+        <a href="@Url.Action("Index", "Laboratorio")" class="btn btn-default">
+             <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Voltar
+        </a>
+
+    </div>
+    <h3>@ViewBag.Title</h3>
+</div> <!-- Cabeçalho -->
+@using (Html.BeginForm("Cadastrar", "Laboratorio", FormMethod.Post, new { novalidate = "" }))
+{
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Descrição *</label>
+            @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Bloco *</label>
+            @Html.EditorFor(model => model.Bloco, new { htmlAttributes = new { @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.Bloco, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Número Sala *</label>
+            @Html.EditorFor(model => model.NumeroSala, new { htmlAttributes = new { @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.NumeroSala, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Quantidade Máquinas *</label>
+            @Html.EditorFor(model => model.QtdMaquinas, new { htmlAttributes = new { @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.QtdMaquinas, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="form-group text-right col-md-2 col-xs-12 ">
+            <button type="submit" class="btn btn-primary col-xs-12">
+                <span class="glyphicon glyphicon-ok"></span>
+                &nbsp;Salvar
+            </button>
+        </div> <!-- Botão de Ação-->
+    </div>
+
+
+}

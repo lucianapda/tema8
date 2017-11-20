@@ -64,6 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\AgendamentoDto.cs" />
+    <Compile Include="Dto\DisciplinaDto.cs" />
+    <Compile Include="Dto\LaboratorioDto.cs" />
+    <Compile Include="Dto\PerfilDto.cs" />
+    <Compile Include="Dto\UsuarioDto.cs" />
     <Compile Include="Entidades\Agendamento.cs" />
     <Compile Include="Entidades\Disciplina.cs" />
     <Compile Include="Entidades\Laboratorio.cs" />
@@ -78,7 +83,11 @@
     <Compile Include="Seguranca\Identidade.cs" />
     <Compile Include="Seguranca\Principal.cs" />
     <Compile Include="Seguranca\Token.cs" />
+    <Compile Include="Services\ServiceAgendamento.cs" />
     <Compile Include="Services\ServiceAutenticacao.cs" />
+    <Compile Include="Services\ServiceUsuario.cs" />
+    <Compile Include="Services\ServiceLaboratorio.cs" />
+    <Compile Include="Services\ServiceDisciplina.cs" />
     <Compile Include="Util\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
