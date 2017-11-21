@@ -84,12 +84,12 @@ namespace TrabalhoBackEnd.Services
                 agendamento = agendamento.Where(x => x.Laboratorio.Id == agendamentoDto.IdLaboratorio);
             }
 
-            if (agendamentoDto.HorarioInicial != null)
+            if (agendamentoDto.HorarioInicial != null && agendamentoDto?.HorarioInicial != DateTime.MinValue)
             {
                 agendamento = agendamento.Where(x => x.HorarioInicial == agendamentoDto.HorarioInicial);
             }
 
-            if (agendamentoDto.HorarioFinal != null)
+            if (agendamentoDto.HorarioFinal != null && agendamentoDto?.HorarioFinal != DateTime.MinValue)
             {
                 agendamento = agendamento.Where(x => x.HorarioFinal == agendamentoDto.HorarioFinal);
             }

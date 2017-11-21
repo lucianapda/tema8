@@ -17,6 +17,12 @@ namespace Aplicacao.Dto
         public DateTime HorarioInicial { get; set; }
         public DateTime HorarioFinal { get; set; }
         public string StatusAgendamento { get; set; }
+
+        public string DiaInicial { get; set; }
+        public string HoraInicial { get; set; }
+        public string DiaFinal { get; set; }
+        public string HoraFinal { get; set; }
+
     }
 
 }

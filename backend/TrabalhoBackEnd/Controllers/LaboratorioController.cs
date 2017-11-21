@@ -83,7 +83,7 @@ namespace TrabalhoBackEnd.Controllers
         /// <summary>
         /// Deletar um laboratório cadastrado
         /// </summary>
-        /// <param name="idLaboratorio">Id laboratório a ser excluido</param>
+        /// <param name="idLaboratorio">Id laboratório a ser excluido</param> 
         /// <returns></returns>
         [Route("{idLaboratorio}")]
         [HttpDelete]

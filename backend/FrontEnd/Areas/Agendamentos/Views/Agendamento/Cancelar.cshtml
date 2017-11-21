@@ -16,6 +16,9 @@
 </div> <!-- Cabeçalho -->
 @using (Html.BeginForm("Cancelar", "Agendamento", FormMethod.Post, new { novalidate = "" }))
 {
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.IdDisciplina)
+    @Html.HiddenFor(model => model.IdLaboratorio)
 
     <div class="row">
         <div class="form-group col-xs-12 col-md-6">

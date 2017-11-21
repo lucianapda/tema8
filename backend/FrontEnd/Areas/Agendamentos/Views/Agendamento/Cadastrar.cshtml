@@ -1,0 +1,74 @@
+﻿@model Aplicacao.Dto.AgendamentoDto
+
+@{
+    ViewBag.Title = "Cancelar";
+}
+@section scripts{
+    @Scripts.Render("~/Areas/Agendamentos/Scripts/agendamento/cadastrar.js")
+}
+
+<div class="page-header">
+    <div class="btn-toolbar pull-right">
+
+        <a href="@Url.Action("Index", "Agendamento" )" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Voltar
+        </a>
+
+    </div>
+    <h3>@ViewBag.Title</h3>
+</div> <!-- Cabeçalho -->
+@using (Html.BeginForm("Cadastrar", "Agendamento"))
+{
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Disciplina</label>
+            @Html.DropDownListFor(model => model.IdDisciplina, new SelectList(ViewBag.SelectListDisciplina, "Id", "Descricao", 2), new { htmlAttributes = new { @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.Disciplina, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-6">
+            <label class="control-label">Laboratorio </label>
+            @Html.DropDownListFor(model => model.IdLaboratorio, new SelectList(ViewBag.SelectListLaboratorio, "Id", "Descricao", 2), new { htmlAttributes = new { @class = "form-control", @maxlength = "100" } })
+            @Html.ValidationMessageFor(model => model.Laboratorio, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-2">
+            <label class="control-label">Horario Iniccial</label>
+            @*@Html.EditorFor(model => model.HorarioInicial, new { htmlAttributes = new { @id = "dataInicial", @class = "form-control date", @maxlength = "100" } })*@
+            <input type="date" name="DiaInicial" class="form-control" >
+        </div>
+        <div class="form-group col-xs-12 col-md-2">
+            <label class="control-label"></label>
+            <input type="time" name="HoraInicial" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-12 col-md-2">
+            <label class="control-label">Horario Iniccial</label>
+            @*@Html.EditorFor(model => model.HorarioInicial, new { htmlAttributes = new { @id = "dataInicial", @class = "form-control date", @maxlength = "100" } })*@
+            <input type="date" name="DiaFinal" class="form-control" >
+        </div>
+        <div class="form-group col-xs-12 col-md-2">
+            <label class="control-label"></label>
+            <input type="time" name="HoraFinal" class="form-control">
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="form-group text-right col-md-2 col-xs-12 ">
+            <button type="submit" class="btn btn-default col-xs-12">
+                <span class="glyphicon glyphicon-ok"></span>
+                &nbsp;Salvar
+            </button>
+        </div> <!-- Botão de Ação-->
+    </div>
+}
+

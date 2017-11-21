@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Agendamentos\Content\Home.css" />
+    <Content Include="Areas\Agendamentos\Scripts\agendamento\cadastrar.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Gridmvc.css" />
@@ -211,6 +212,8 @@
     <Content Include="Areas\Agendamentos\Views\Usuario\Index.cshtml" />
     <Content Include="Areas\Agendamentos\Views\Agendamento\Cancelar.cshtml" />
     <Content Include="Areas\Agendamentos\Views\Agendamento\Liberar.cshtml" />
+    <Content Include="Areas\Agendamentos\Views\Agendamento\Cadastrar.cshtml" />
+    <Content Include="Areas\Agendamentos\Views\Agendamento\Finalizar.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

@@ -81,7 +81,7 @@ namespace Aplicacao.Services
             }
         }
 
-        public bool Cancelar(string token, int id)
+        public bool Cancelar(string token, AgendamentoDto model)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -90,11 +90,35 @@ namespace Aplicacao.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("Authorization", token);
 
-                var response = client.GetAsync("agendamento").Result;
+                var response = client.PutAsJsonAsync("agendamento/liberar", model).Result;
 
-                return response.Content.ReadAsAsync<List<AgendamentoDto>>().Result.FirstOrDefault(a => a.Id == id);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                return false;
             }
         }
 
+        public bool Finalizar(string token, AgendamentoDto model)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54438/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("Authorization", token);
+
+                var response = client.PutAsJsonAsync("agendamento/finalizar", model).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
     }
 }

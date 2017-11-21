@@ -219,3 +219,4 @@ C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\T
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.csproj.GenerateResource.Cache
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.dll
 C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.pdb
+C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\TrabalhoBackEnd\obj\Debug\TrabalhoBackEnd.csprojResolveAssemblyReference.cache

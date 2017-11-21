@@ -22,7 +22,6 @@ namespace TrabalhoBackEnd.Mapeamentos
             Mapper.CreateMap<Laboratorio, LaboratorioDto>();
 
             Mapper.CreateMap<Agendamento, AgendamentoDto>()
-                .ForMember(x => x.Id, opt => opt.Ignore())
                 .ForMember(x => x.IdDisciplina, opt => opt.Ignore())
                 .ForMember(x => x.IdLaboratorio, opt => opt.Ignore())
                 .ForMember(x => x.BlocoLaboratorio, opt => opt.MapFrom(v => v.Laboratorio.Bloco))
