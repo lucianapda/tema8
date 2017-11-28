@@ -6,25 +6,35 @@
     }
 
     if ($("#Nome").val() === "") {
-        alert("Nome é obrigatorio.");
+        var message = "Nome é obrigatorio.";
+        erro(message);
         return false;
     }
 
     if ($("#Login").val() === "") {
-        alert("Login é obrigatorio.");
+        erro("Login é obrigatorio.");
         return false;
     }
 
     if ($("#Senha").val() === "" || $("#ConfirmarSenha").val() === "") {
-        alert("Senha e confirmar senha é obrigatorio.");
+        erro("Senha e confirmar senha é obrigatorio.");
         return false;
     }
 
     if ($("#Senha").val() !== $("#ConfirmarSenha").val())
     {
-        alert("Senhas devem ser iguais.");
+        erro("Senhas devem ser iguais.");
         return false;
     }
 
     return true;
 });
+
+function erro(message) {
+    $('#alerts').append(
+        '<div class="alert alert-danger">' +
+        '<strong>Erro!</strong> <a href="#" class="alert-link">' +
+        message +
+        '</a><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>' +
+        '</div>');
+}

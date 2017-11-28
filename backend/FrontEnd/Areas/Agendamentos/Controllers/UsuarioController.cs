@@ -5,10 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Aplicacao.Dto;
+using Aplicacao.Enumeradores;
+using Aplicacao.Seguranca;
 using Aplicacao.Services;
 
 namespace FrontEnd.Areas.Agendamentos.Controllers
 {
+    [Autorizar(Perfis = PerfilUsuario.Usuario)]
+
     public class UsuarioController : Controller
     {
         private readonly ServiceUsuario _serviceUsuario;

@@ -5,10 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Aplicacao.Dto;
+using Aplicacao.Enumeradores;
+using Aplicacao.Seguranca;
 using Aplicacao.Services;
+using Aplicacao.Util;
 
 namespace FrontEnd.Areas.Agendamentos.Controllers
 {
+    [Autorizar(Perfis = PerfilUsuario.Usuario)]
     public class LaboratorioController : Controller
     {
         private readonly ServiceLaboratorio _serviceLaboratorio;
@@ -22,7 +26,7 @@ namespace FrontEnd.Areas.Agendamentos.Controllers
         // GET: Agendamentos/Disciplina
         public ActionResult Index()
         {
-            var value = Request.Cookies[FormsAuthentication.FormsCookieName].Value;
+            var value = Utils.ObterTokenGwtCookie(Request);
             var lista = _serviceLaboratorio.ObterTodas(value);
 
             if (lista == null)

@@ -1,11 +1,30 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
+using System.Web.Security;
 
 namespace Aplicacao.Util
 {
     public static class Utils
     {
+        public static string ObterTokenGwtCookie(HttpRequestBase Request)
+        {
+            if (Request == null)
+            {
+                throw new ArgumentException(nameof(Request));
+            }
+
+            var cookie = Request?.Cookies[FormsAuthentication.FormsCookieName];
+            if (cookie == null)
+            {
+                throw new InvalidOperationException("Cookie inexistente.");
+            }
+
+            return cookie.Value;
+
+        }
+
         public static string GenerateSHA512String(string inputString)
         {
             SHA512 sha512 = SHA512Managed.Create();

@@ -173,3 +173,4 @@ C:\Users\guilherme.schafer\Documents\tbackend\backend\FrontEnd\obj\Debug\FrontEn
 C:\Users\guilherme.schafer\Documents\tbackend\backend\FrontEnd\obj\Debug\FrontEnd.csproj.CoreCompileInputs.cache
 C:\Users\guilherme.schafer\Documents\tbackend\backend\FrontEnd\obj\Debug\FrontEnd.dll
 C:\Users\guilherme.schafer\Documents\tbackend\backend\FrontEnd\obj\Debug\FrontEnd.pdb
+C:\Users\Guilherme\Documents\TrabalhoBackEnd\backend\FrontEnd\bin\pt-BR\Microsoft.QualityTools.Testing.Fakes.resources.dll

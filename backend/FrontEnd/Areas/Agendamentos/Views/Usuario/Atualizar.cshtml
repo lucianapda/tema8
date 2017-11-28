@@ -10,13 +10,15 @@
 <div class="page-header">
     <div class="btn-toolbar pull-right">
 
-        <a href="@Url.Action("Index", "Usuario")" class="btn btn-default">
+        <a href="@Url.Action("Index", "Usuario")" class="btn btn-primary">
             <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Voltar
         </a>
 
     </div>
     <h3>@ViewBag.Title</h3>
 </div> <!-- Cabeçalho -->
+<div id="alerts"></div>
+
 @using (Html.BeginForm("Atualizar", "Usuario", FormMethod.Post, new { novalidate = "" }))
 {
 
@@ -54,11 +56,12 @@
     </div>
 
     <div class="row">
-        <div class="form-group text-right col-md-2 col-xs-12 ">
-            <button type="submit" class="btn btn-primary col-xs-12">
-                <span class="glyphicon glyphicon-ok"></span>
-                &nbsp;Salvar
+        <div class="pull-right col-xs-12 col-sm-4">
+            <br />
+            <label class="d-block hidden-xs col-sm-8">&nbsp;</label>
+            <button type="submit" class="btn btn-success col-xs-12 col-sm-4" style="vertical-align:bottom">
+                <span class="glyphicon glyphicon-ok"></span>&nbsp;Salvar
             </button>
-        </div> <!-- Botão de Ação-->
+        </div> <!-- Botão de ação -->
     </div>
 }
