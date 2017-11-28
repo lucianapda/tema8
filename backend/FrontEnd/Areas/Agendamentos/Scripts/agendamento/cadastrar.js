@@ -20,31 +20,13 @@
         return false;
     }
 
-    if ($("#DiaInicial").val() < new Date().toLocaleString()) {
-        erro("Dia inicial não pode ser menor que a data atual.");
-        return false;
-    }
 
     if ($("#DiaFinal").val() === ""|| $("#HoraFinal").val() === "") {
         erro("Dia e hora final é obrigatorio.");
         return false;
     }
-
-    if ($("#DiaFinal").val() < new Date().toLocaleString()) {
-        erro("Dia inicial não pode ser menor que a data atual.");
-        return false;
-    }
-
-    if ($("#DiaInicial").val() > $("#DiaFinal").val()) {
-        erro("Data inicial não pode ser maior que data final.");
-        return false;
-    }
-
-    if ($("#DiaFinal").val() > $("#DiaFinal").val()) {
-        erro("Data final não pode ser maior que data final.");
-        return false;
-    }
-
+    
+ 
     return true;
 });
 
