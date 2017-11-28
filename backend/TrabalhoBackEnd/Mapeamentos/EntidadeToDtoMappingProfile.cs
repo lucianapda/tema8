@@ -18,6 +18,8 @@ namespace TrabalhoBackEnd.Mapeamentos
         protected override void Configure()
         {
             Mapper.CreateMap<Disciplina, DisciplinaDto>();
+            Mapper.CreateMap<Usuario, UsuarioDto>();
+            Mapper.CreateMap<Perfil, PerfilDto>();
 
             Mapper.CreateMap<Laboratorio, LaboratorioDto>();
 

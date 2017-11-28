@@ -35,6 +35,19 @@ namespace TrabalhoBackEnd.Services
             contexo.SaveChanges();
         }
 
-       
+        public UsuarioDto Obter(int id)
+        {
+            var usuario = contexo.Usuarios.Where(u => u.Id == id).FirstOrDefault();
+
+            return Mapper.Map<Usuario, UsuarioDto>(usuario);
+        }
+
+        public List<UsuarioDto> Obtertodos()
+        {
+            var usuario = contexo.Usuarios.ToList();
+
+            return Mapper.Map<List<Usuario>, List<UsuarioDto>>(usuario);
+        }
+
     }
 }

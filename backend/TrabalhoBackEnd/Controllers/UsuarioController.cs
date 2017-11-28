@@ -39,5 +39,33 @@ namespace TrabalhoBackEnd.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [Route("{id}")]
+        [HttpGet]
+        public IHttpActionResult Obter(int id)
+        {
+            try
+            {
+                return Ok(serviceUsuario.Obter(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [Route]
+        [HttpGet]
+        public IHttpActionResult ObterTodos()
+        {
+            try
+            {
+                return Ok(serviceUsuario.Obtertodos());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

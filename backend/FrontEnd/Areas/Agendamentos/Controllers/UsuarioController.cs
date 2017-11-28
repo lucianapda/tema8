@@ -41,7 +41,7 @@ namespace FrontEnd.Areas.Agendamentos.Controllers
 
         public ActionResult Cadastrar()
         {
-            var model = new LaboratorioDto();
+            var model = new UsuarioDto();
             return View(model);
         }
 

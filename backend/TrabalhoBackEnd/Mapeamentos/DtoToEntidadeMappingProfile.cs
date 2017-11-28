@@ -21,6 +21,10 @@ namespace TrabalhoBackEnd.Mapeamentos
             Mapper.CreateMap<LaboratorioDto, Laboratorio>();
             Mapper.CreateMap<DisciplinaDto, Disciplina>();
             Mapper.CreateMap<AgendamentoDto, Agendamento>();
+            Mapper.CreateMap<UsuarioDto, Usuario>();
+            Mapper.CreateMap<PerfilDto, Perfil>();
+
+
         }
     }
 }
