@@ -13,7 +13,7 @@ using TrabalhoBackEnd.Services;
 
 namespace TrabalhoBackEnd.Controllers
 {
-    //[Autorizar(Perfis = PerfilUsuario.Usuario)]
+    //[Autorizar(Perfis = PerfilUsuario.Usuario | PerfilUsuario.Administrador)]
     [RoutePrefix("usuario")]
     public class UsuarioController : ApiController
     {

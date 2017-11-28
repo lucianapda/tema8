@@ -27,6 +27,10 @@ namespace FrontEnd.Areas.Agendamentos.Controllers
         {
             var value = Request.Cookies[FormsAuthentication.FormsCookieName].Value;
             var lista = _serviceDisciplina.ObterTodas(value);
+            if (lista == null)
+            {
+                lista = new List<DisciplinaDto>();
+            }
             return View(lista);
         }
 

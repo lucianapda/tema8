@@ -28,6 +28,10 @@ namespace FrontEnd.Areas.Agendamentos.Controllers
         {
             var value = Request.Cookies[FormsAuthentication.FormsCookieName].Value;
             var lista = _serviceAgendamento.ObterTodas(value);
+            if (lista == null)
+            {
+                lista = new List<AgendamentoDto>();
+            }
             return View(lista);
         }
 

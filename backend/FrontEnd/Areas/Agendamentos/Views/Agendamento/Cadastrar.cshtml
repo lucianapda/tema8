@@ -1,10 +1,10 @@
 ﻿@model Aplicacao.Dto.AgendamentoDto
 
 @{
-    ViewBag.Title = "Cancelar";
+    ViewBag.Title = "Cadastrar";
 }
 @section scripts{
-    @Scripts.Render("~/Areas/Agendamentos/Scripts/agendamento/cadastrar.js")
+    @Scripts.Render("~/Scripts/Agendamento")
 }
 
 <div class="page-header">
@@ -40,23 +40,23 @@
         <div class="form-group col-xs-12 col-md-2">
             <label class="control-label">Horario Iniccial</label>
             @*@Html.EditorFor(model => model.HorarioInicial, new { htmlAttributes = new { @id = "dataInicial", @class = "form-control date", @maxlength = "100" } })*@
-            <input type="date" name="DiaInicial" class="form-control" >
+            <input type="date" id="DiaInicial" name="DiaInicial" class="form-control" >
         </div>
         <div class="form-group col-xs-12 col-md-2">
             <label class="control-label"></label>
-            <input type="time" name="HoraInicial" class="form-control">
+            <input type="time" id="HoraInicial" name="HoraInicial" class="form-control">
         </div>
     </div>
 
     <div class="row">
         <div class="form-group col-xs-12 col-md-2">
-            <label class="control-label">Horario Iniccial</label>
+            <label class="control-label">Horario Inicial</label>
             @*@Html.EditorFor(model => model.HorarioInicial, new { htmlAttributes = new { @id = "dataInicial", @class = "form-control date", @maxlength = "100" } })*@
-            <input type="date" name="DiaFinal" class="form-control" >
+            <input type="date" id="DiaFinal" name="Diafinal" class="form-control" >
         </div>
         <div class="form-group col-xs-12 col-md-2">
             <label class="control-label"></label>
-            <input type="time" name="HoraFinal" class="form-control">
+            <input type="time" id="HoraFinal" name="HoraFinal" class="form-control">
         </div>
     </div>
 

@@ -24,6 +24,11 @@ namespace FrontEnd.Areas.Agendamentos.Controllers
         {
             var value = Request.Cookies[FormsAuthentication.FormsCookieName].Value;
             var lista = _serviceLaboratorio.ObterTodas(value);
+
+            if (lista == null)
+            {
+                lista = new List<LaboratorioDto>();
+            }
             return View(lista);
         }
 

@@ -29,6 +29,18 @@ namespace FrontEnd
 
             bundles.Add(new StyleBundle("~/bundles/Agendamentos/Styles/Home")
                 .Include("~/Areas/Agendamentos/Content/Home.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Disciplina").Include(
+                "~/Areas/Agendamentos/Scripts/Disciplina/cadastrar.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Laboratorio").Include(
+                "~/Areas/Agendamentos/Scripts/Laboratorio/laboratorio.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Usuario").Include(
+                "~/Areas/Agendamentos/Scripts/Usuario/usuario.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Agendamento").Include(
+                "~/Areas/Agendamentos/Scripts/Agendamento/cadastrar.js"));
         }
     }
 }

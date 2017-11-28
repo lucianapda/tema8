@@ -24,6 +24,10 @@ namespace FrontEnd.Areas.Agendamentos.Controllers
         {
             var value = Request.Cookies[FormsAuthentication.FormsCookieName].Value;
             var lista = _serviceUsuario.ObterTodas(value);
+            if (lista == null)
+            {
+                lista = new List<UsuarioDto>();
+            }
             return View(lista);
         }
 

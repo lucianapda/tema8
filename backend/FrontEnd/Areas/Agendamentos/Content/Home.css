@@ -15,18 +15,18 @@ a.thumbnail {
     border-radius: 0;
 }
 
-    a.thumbnail, a.thumbnail:hover, a.thumbnail:active, a.thumbnail:focus {
-        text-decoration: none;
-        color: #006400;
-        outline: none;
-        text-align: center;
-        box-shadow: none;
-    }
+a.thumbnail, a.thumbnail:hover, a.thumbnail:active, a.thumbnail:focus {
+    text-decoration: none;
+    color: #006400;
+    outline: none;
+    text-align: center;
+    box-shadow: none;
+}
 
-        a.thumbnail:hover, a.thumbnail:active, a.thumbnail:focus {
-            border: 1px solid #495f32;
-            border-color: #495f32;
-        }
+    a.thumbnail:hover, a.thumbnail:active, a.thumbnail:focus {
+        border: 1px solid #495f32;
+        border-color: #495f32;
+    }
 
 @media(max-width:767px) {
     a.thumbnail {
