@@ -188,6 +188,7 @@
     <Content Include="Areas\Agendamentos\Content\Home.css" />
     <Content Include="Areas\Agendamentos\Scripts\agendamento\cadastrar.js" />
     <Content Include="Areas\Agendamentos\Scripts\Disciplina\cadastrar.js" />
+    <Content Include="Areas\Agendamentos\Scripts\Home\home.js" />
     <Content Include="Areas\Agendamentos\Scripts\Laboratorio\laboratorio.js" />
     <Content Include="Areas\Agendamentos\Scripts\Usuario\usuario.js" />
     <Content Include="Content\bootstrap.css" />
@@ -198,6 +199,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Areas\Agendamentos\Images\agenda-1111.jpg" />
+    <Content Include="Images\bg-agendamento.jpg" />
     <Content Include="Images\logo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

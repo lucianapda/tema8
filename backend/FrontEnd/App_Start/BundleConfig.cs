@@ -41,6 +41,9 @@ namespace FrontEnd
 
             bundles.Add(new ScriptBundle("~/Scripts/Agendamento").Include(
                 "~/Areas/Agendamentos/Scripts/Agendamento/cadastrar.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Home").Include(
+                "~/Areas/Agendamentos/Scripts/Home/home.js"));
         }
     }
 }

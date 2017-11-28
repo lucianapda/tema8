@@ -3,61 +3,10 @@
 }
 
 @section styles{
-    @Styles.Render("~/bundles/Agendamentos/Styles/Home")
+    @Styles.Render("~/Scripts/Home")
 }
-<style>
-    body {
-        background-image: url("~/Images/agenda-1111.jpg");
-    }
-</style>
-<nav>
-    <div class="row topo-m topo-inicio">
-        <div class="col-sm-8 col-sm-offset-2">
-
-           
-                <div class="col-sm-4">
-                    <div class="thumbnail-box">
-
-                        <a href="@Url.Action("Index", "Laboratorio")" class="thumbnail" tabindex="1">
-                            <span> Laboratorio</span>
-                        </a>
-                    </div>
-                </div>
-            
-
-                <div class="col-sm-4 xs-m-top">
-                    <div class="thumbnail-box">
-                        <a href="@Url.Action("Index", "Disciplina")" class="thumbnail" tabindex="2">
-                            <span>Disciplina</span>
-                        </a>
-                    </div>
-                </div>
-           
-                <div class="col-sm-4 xs-m-top">
-                    <div class="thumbnail-box">
-                        <a href="@Url.Action("Index", "Agendamento")" class="thumbnail" tabindex="3">
-                            <span>Agendamento</span>
-                        </a>
-                    </div>
-                </div>
-            
-
-        </div>
+<div class="div-pagina-inicial">
+    <div class="row row-siga-main">
+        <img class="siga-main-image" src="~/Images/bg-agendamento.jpg" width="100%" height="100%" />
     </div>
-
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-
-                <div class="col-sm-4">
-                    <div class="thumbnail-box">
-                        <a href="@Url.Action("Index", "Usuario")" class="thumbnail" tabindex="4">
-                            <span>Usuário</span>
-                        </a>
-                    </div>
-                </div>
-         
-               
-
-        </div>
-    </div>
-</nav>
+</div>
